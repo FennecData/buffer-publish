@@ -83,13 +83,6 @@ export default ({ dispatch, getState }) => next => (action) => {
       break;
     case actionTypes.CLEAR_ALL_TIMES:
       dispatch(dataFetchActions.fetch({
-        name: 'updateSchedule',
-        args: {
-          profileId: action.profileId,
-          schedules: getState().settings.schedules,
-        },
-      }));
-      dispatch(dataFetchActions.fetch({
         name: 'updatePausedSchedules',
         args: {
           profileId: action.profileId,

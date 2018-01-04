@@ -158,7 +158,7 @@ export default (state = initialState, action) => {
     case actionTypes.CLEAR_ALL_TIMES:
       pausedSchedules = deleteAllTimesFromSchedule(state.pausedSchedules);
       schedules = deleteAllTimesFromSchedule(state.schedules);
-      mergedSchedules = [];
+      mergedSchedules = mergeSchedules(schedules, pausedSchedules);
       return {
         ...state,
         days: transformSchedules(cloneDeep(mergedSchedules), cloneDeep(pausedSchedules)),
