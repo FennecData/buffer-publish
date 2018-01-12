@@ -158,13 +158,12 @@ export default (state = initialState, action) => {
     case actionTypes.CLEAR_ALL_TIMES:
       pausedSchedules = deleteAllTimesFromSchedule(state.pausedSchedules);
       schedules = deleteAllTimesFromSchedule(state.schedules);
-      mergedSchedules = mergeSchedules(schedules, pausedSchedules);
       return {
         ...state,
-        days: transformSchedules(cloneDeep(mergedSchedules), cloneDeep(pausedSchedules)),
+        days: transformSchedules(cloneDeep(schedules), cloneDeep(pausedSchedules)),
         schedules,
         pausedSchedules,
-        mergedSchedules,
+        mergedSchedules: schedules,
         showClearAllModal: false,
       };
     case actionTypes.UPDATE_PAUSED_SCHEDULE:
