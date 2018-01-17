@@ -18,7 +18,7 @@ const getPostActionString = ({ post }) => {
   const timestampToConvert = post.sent_at || post.due_at;
   // due_at set to 0 when user has no scheduled posting times
   if (timestampToConvert === 0) {
-    return 'NO TIME SET';
+    return 'No Time Set';
   }
   const dateString = getDateString(
     timestampToConvert,

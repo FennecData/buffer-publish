@@ -56,7 +56,7 @@ const renderLockedHeader = translations => (
     <Text size={'small'}>
       {translations.lockedList}
     </Text>
-    <div style={{ marginLeft: 'auto' }}>
+    <div style={{ position: 'absolute', marginLeft: '13rem' }}>
       <IconArrowPopover
         icon={<QuestionIcon />}
         position="above"

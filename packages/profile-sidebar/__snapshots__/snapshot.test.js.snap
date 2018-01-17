@@ -1682,7 +1682,8 @@ exports[`Snapshots ProfileSidebar should display a list of profiles 1`] = `
         <div
           style={
             Object {
-              "marginLeft": "auto",
+              "marginLeft": "13rem",
+              "position": "absolute",
             }
           }
         >
@@ -2663,7 +2664,8 @@ exports[`Snapshots ProfileSidebar should display a long list of profiles 1`] = `
         <div
           style={
             Object {
-              "marginLeft": "auto",
+              "marginLeft": "13rem",
+              "position": "absolute",
             }
           }
         >

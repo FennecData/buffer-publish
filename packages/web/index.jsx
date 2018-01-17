@@ -43,7 +43,6 @@ if (module.hot) {
     './components/App',
     '../app-sidebar/index.js',
     '../async-data-fetch/index.js',
-    '../composer/index.js',
     '../environment/index.js',
     '../example/index.js',
     '../i18n/index.js',

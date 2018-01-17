@@ -6,5 +6,5 @@ UPLOADER="https://github.com/bufferapp/buffer-static-upload/releases/download/0.
 curl -L $UPLOADER > ./buffer-static-upload
 chmod +x ./buffer-static-upload
 
-FILES="bundle.js"
+FILES="bundle.js,composer-bundle.css"
 ./buffer-static-upload -files "$FILES" -dir publish

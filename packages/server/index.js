@@ -22,6 +22,7 @@ const server = http.createServer(app);
 let staticAssets = {
   // 'bundle.js': '/static/bundle.js',
   'bundle.js': 'https://local.buffer.com:8080/static/bundle.js',
+  'composer-bundle.css': 'https://local.buffer.com:8080/static/composer-bundle.css',
 };
 
 // NOTE: Bugsnag will not notify in local setup with current weback configuration
@@ -63,6 +64,7 @@ window['_fs_namespace'] = 'FS';
 
 const getHtml = () => fs.readFileSync(join(__dirname, 'index.html'), 'utf8')
                                     .replace('{{{bundle}}}', staticAssets['bundle.js'])
+                                    .replace('{{{composer-css-bundle}}}', staticAssets['composer-bundle.css'])
                                     .replace('{{{bugsnagScript}}}', bugsnagScript)
                                     .replace('{{{fullStoryScript}}}', fullStoryScript);
 
