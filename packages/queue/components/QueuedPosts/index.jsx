@@ -19,7 +19,13 @@ import MiniCalendar from  '../MiniCalendar';
 
 const composerStyle = {
   marginBottom: '1.5rem',
+  flexGrow: '1',
+  marginRight: '1.5rem',
 };
+
+const topBarContainerStyle = {
+  display: 'flex',
+}
 
 const loadingContainerStyle = {
   width: '100%',
@@ -63,22 +69,24 @@ const QueuedPosts = ({
   return (
     <div>
       <PostDragLayer />
-      <Button secondary onClick={onCalendarToggleClick}>
-        {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
-      </Button>
-      {showCalendar && <MiniCalendar />}
-      <div style={composerStyle}>
-        {showComposer && !editMode &&
-          <ComposerPopover
-            onSave={onComposerCreateSuccess}
-            transparentOverlay
-            preserveComposerStateOnClose
+      <div style={topBarContainerStyle}>
+        <div style={composerStyle}>
+          {showComposer && !editMode &&
+            <ComposerPopover
+              onSave={onComposerCreateSuccess}
+              transparentOverlay
+              preserveComposerStateOnClose
+            />
+          }
+          <Input
+            placeholder={'What would you like to share?'}
+            onFocus={onComposerPlaceholderClick}
           />
-        }
-        <Input
-          placeholder={'What would you like to share?'}
-          onFocus={onComposerPlaceholderClick}
-        />
+        </div>
+        <Button secondary onClick={onCalendarToggleClick}>
+          {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+        </Button>
+        {showCalendar && <MiniCalendar />}
       </div>
       {!!paused && <QueuePausedBar handleClickUnpause={onUnpauseClick} />}
       {total < 1 &&
@@ -138,7 +146,7 @@ QueuedPosts.propTypes = {
   editMode: PropTypes.bool,
   paused: PropTypes.bool,
   onUnpauseClick: PropTypes.func.isRequired,
-  showCalendar: PropTypes.bool.isRequired,
+  showCalendar: PropTypes.bool,
   onCalendarToggleClick: PropTypes.func.isRequired,
 };
 
@@ -152,6 +160,7 @@ QueuedPosts.defaultProps = {
   enabledApplicationModes: [],
   editMode: false,
   paused: false,
+  showCalendar: false,
 };
 
 export default QueuedPosts;
