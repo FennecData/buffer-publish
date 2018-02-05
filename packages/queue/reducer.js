@@ -21,6 +21,7 @@ export const actionTypes = {
   POST_DROPPED: 'POST_DROPPED',
   REORDERED_UPDATES: 'REORDERED_UPDATES',
   POST_REQUEUE: 'POST_REQUEUE',
+  TOGGLE_CALENDAR: 'TOGGLE_CALENDAR',
 };
 
 const initialState = {
@@ -39,6 +40,7 @@ const profileInitialState = {
   page: 1,
   posts: {},
   total: 0,
+  showCalendar: false,
 };
 
 const determineIfMoreToLoad = (action, currentPosts) => {
@@ -365,6 +367,11 @@ const profileReducer = (state = profileInitialState, action) => {
       }
       return state;
     }
+    case actionTypes.TOGGLE_CALENDAR:
+      return {
+        ...state,
+        showCalendar: state.showCalendar ? false : true,
+      }
     case `sharePostNow_${dataFetchActionTypes.FETCH_FAIL}`:
     case actionTypes.POST_ERROR:
     case actionTypes.POST_CREATED:
@@ -412,7 +419,8 @@ export default (state = initialState, action) => {
     case actionTypes.POST_IMAGE_CLICKED_PREV:
     case actionTypes.POST_SHARE_NOW:
     case actionTypes.POST_SENT:
-    case actionTypes.POST_COUNT_UPDATED: {
+    case actionTypes.POST_COUNT_UPDATED:
+    case actionTypes.TOGGLE_CALENDAR: {
       profileId = getProfileId(action);
       if (profileId) {
         return {
@@ -528,6 +536,10 @@ export const actions = {
     hoverIndex,
     commit,
     keyboardDirection,
+    profileId,
+  }),
+  handleCalendarToggle: ({ profileId }) => ({
+    type: actionTypes.TOGGLE_CALENDAR,
     profileId,
   }),
 };

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   Input,
   LoadingAnimation,
+  Button,
 } from '@bufferapp/components';
 import {
   EmptyState,
@@ -14,6 +15,7 @@ import {
 import ComposerPopover from '../ComposerPopover';
 import QueueItems from '../QueueItems';
 import QueuePausedBar from '../QueuePausedBar';
+import MiniCalendar from  '../MiniCalendar';
 
 const composerStyle = {
   marginBottom: '1.5rem',
@@ -44,9 +46,11 @@ const QueuedPosts = ({
   onImageClose,
   onDropPost,
   showComposer,
+  showCalendar,
   editMode,
   paused,
   onUnpauseClick,
+  onCalendarToggleClick,
 }) => {
   if (loading) {
     return (
@@ -59,6 +63,10 @@ const QueuedPosts = ({
   return (
     <div>
       <PostDragLayer />
+      <Button secondary onClick={onCalendarToggleClick}>
+        {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+      </Button>
+      {showCalendar && <MiniCalendar />}
       <div style={composerStyle}>
         {showComposer && !editMode &&
           <ComposerPopover
@@ -130,6 +138,8 @@ QueuedPosts.propTypes = {
   editMode: PropTypes.bool,
   paused: PropTypes.bool,
   onUnpauseClick: PropTypes.func.isRequired,
+  showCalendar: PropTypes.bool.isRequired,
+  onCalendarToggleClick: PropTypes.func.isRequired,
 };
 
 QueuedPosts.defaultProps = {
