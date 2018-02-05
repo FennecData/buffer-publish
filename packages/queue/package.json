@@ -17,7 +17,8 @@
     "@bufferapp/notifications": "1.2.7",
     "@bufferapp/publish-profile-sidebar": "1.2.9",
     "@bufferapp/publish-shared-components": "1.2.9",
-    "moment-timezone": "0.5.12"
+    "moment-timezone": "0.5.12",
+    "react-day-picker": "7.0.7"
   },
   "devDependencies": {
     "@storybook/addon-storyshots": "3.1.4",

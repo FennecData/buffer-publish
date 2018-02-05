@@ -34,6 +34,10 @@ const loadingContainerStyle = {
   paddingTop: '5rem',
 };
 
+const buttonStyle = {
+  height: '40px',
+}
+
 const QueuedPosts = ({
   total,
   loading,
@@ -83,9 +87,11 @@ const QueuedPosts = ({
             onFocus={onComposerPlaceholderClick}
           />
         </div>
-        <Button secondary onClick={onCalendarToggleClick}>
-          {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
-        </Button>
+        <div style={buttonStyle}>
+          <Button secondary onClick={onCalendarToggleClick}>
+            {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+          </Button>
+        </div>
         {showCalendar && <MiniCalendar />}
       </div>
       {!!paused && <QueuePausedBar handleClickUnpause={onUnpauseClick} />}
