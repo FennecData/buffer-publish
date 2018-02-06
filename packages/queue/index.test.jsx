@@ -36,12 +36,15 @@ describe('Queue', () => {
             page: 1,
             posts: [],
             total: 0,
+            showCaledar: false,
           },
         },
       },
       environment: {
         environment: 'production',
       },
+      hasCalendarFeatureFlip: false,
+
     });
     const wrapper = mount(
       <Provider store={store}>
@@ -54,6 +57,7 @@ describe('Queue', () => {
           onEditClick={jest.fn()}
           onRequeueClick={jest.fn()}
           onShareNowClick={jest.fn()}
+          onCalendarToggleClick={jest.fn()}
         />
       </Provider>,
     );

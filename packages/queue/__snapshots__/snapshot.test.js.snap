@@ -137,32 +137,41 @@ exports[`Snapshots QueuedPosts default 1`] = `
       <div
         style={
           Object {
-            "marginBottom": "1.5rem",
+            "display": "flex",
           }
         }
       >
-        <div>
-          <input
-            disabled={undefined}
-            onBlur={undefined}
-            onChange={undefined}
-            onFocus={undefined}
-            placeholder="What would you like to share?"
-            style={
-              Object {
-                "border": "0.063rem solid #ced7df",
-                "borderRadius": "0.126rem",
-                "boxSizing": "border-box",
-                "fontFamily": "\\"Open Sans\\", sans-serif",
-                "fontSize": "1rem",
-                "outline": 0,
-                "padding": "0.5rem",
-                "width": "100%",
-              }
+        <div
+          style={
+            Object {
+              "flexGrow": "1",
+              "marginBottom": "1.5rem",
             }
-            type="text"
-            value={undefined}
-          />
+          }
+        >
+          <div>
+            <input
+              disabled={undefined}
+              onBlur={undefined}
+              onChange={undefined}
+              onFocus={undefined}
+              placeholder="What would you like to share?"
+              style={
+                Object {
+                  "border": "0.063rem solid #ced7df",
+                  "borderRadius": "0.126rem",
+                  "boxSizing": "border-box",
+                  "fontFamily": "\\"Open Sans\\", sans-serif",
+                  "fontSize": "1rem",
+                  "outline": 0,
+                  "padding": "0.5rem",
+                  "width": "100%",
+                }
+              }
+              type="text"
+              value={undefined}
+            />
+          </div>
         </div>
       </div>
       <div>
@@ -1656,32 +1665,41 @@ exports[`Snapshots QueuedPosts paused 1`] = `
       <div
         style={
           Object {
-            "marginBottom": "1.5rem",
+            "display": "flex",
           }
         }
       >
-        <div>
-          <input
-            disabled={undefined}
-            onBlur={undefined}
-            onChange={undefined}
-            onFocus={undefined}
-            placeholder="What would you like to share?"
-            style={
-              Object {
-                "border": "0.063rem solid #ced7df",
-                "borderRadius": "0.126rem",
-                "boxSizing": "border-box",
-                "fontFamily": "\\"Open Sans\\", sans-serif",
-                "fontSize": "1rem",
-                "outline": 0,
-                "padding": "0.5rem",
-                "width": "100%",
-              }
+        <div
+          style={
+            Object {
+              "flexGrow": "1",
+              "marginBottom": "1.5rem",
             }
-            type="text"
-            value={undefined}
-          />
+          }
+        >
+          <div>
+            <input
+              disabled={undefined}
+              onBlur={undefined}
+              onChange={undefined}
+              onFocus={undefined}
+              placeholder="What would you like to share?"
+              style={
+                Object {
+                  "border": "0.063rem solid #ced7df",
+                  "borderRadius": "0.126rem",
+                  "boxSizing": "border-box",
+                  "fontFamily": "\\"Open Sans\\", sans-serif",
+                  "fontSize": "1rem",
+                  "outline": 0,
+                  "padding": "0.5rem",
+                  "width": "100%",
+                }
+              }
+              type="text"
+              value={undefined}
+            />
+          </div>
         </div>
       </div>
       <div
