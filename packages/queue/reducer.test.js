@@ -12,6 +12,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       type: 'INIT',
@@ -31,6 +32,7 @@ describe('reducer', () => {
           page: 1,
           posts: {},
           total: 0,
+          showCalendar: false,
         },
       },
       enabledApplicationModes: [],
@@ -38,6 +40,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       profileId,
@@ -62,6 +65,7 @@ describe('reducer', () => {
           page: 2,
           posts: [post],
           total: 1,
+          showCalendar: false,
         },
       },
       enabledApplicationModes: [],
@@ -69,6 +73,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       profileId,
@@ -96,6 +101,7 @@ describe('reducer', () => {
           page: 1,
           posts: {},
           total: 0,
+          showCalendar: false,
         },
       },
       enabledApplicationModes: [],
@@ -103,6 +109,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       profileId,
@@ -121,6 +128,7 @@ describe('reducer', () => {
           loading: true,
           loadingMore: false,
           moreToLoad: false,
+          showCalendar: false,
           page: 1,
           posts: { 12345: postCreated },
           total: 0, // still 0 because counts are updated separately
@@ -131,6 +139,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       type: 'POST_CREATED',
@@ -154,6 +163,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: post },
           total: 1,
+          showCalendar: false,
         },
       },
       enabledApplicationModes: [],
@@ -161,6 +171,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const stateAfter = {
       byProfileId: {
@@ -169,6 +180,7 @@ describe('reducer', () => {
           loadingMore: false,
           moreToLoad: false,
           page: 1,
+          showCalendar: false,
           posts: { 12345: postEdited },
           total: 1,
         },
@@ -178,6 +190,7 @@ describe('reducer', () => {
       environment: 'production',
       editMode: false,
       editingPostId: '',
+      hasCalendarFeatureFlip: false,
     };
     const action = {
       type: 'POST_UPDATED',
@@ -202,6 +215,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: post },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -214,6 +228,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: postAfter },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -240,6 +255,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: post },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -252,6 +268,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: postAfter },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -277,6 +294,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: post },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -289,6 +307,7 @@ describe('reducer', () => {
           page: 1,
           posts: { },
           total: 1, // still 1 because counts are updated separately
+          showCalendar: false,
         },
       },
     };
@@ -315,6 +334,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: post },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -327,6 +347,7 @@ describe('reducer', () => {
           page: 1,
           posts: { 12345: postAfter },
           total: 1,
+          showCalendar: false,
         },
       },
     };
@@ -334,6 +355,45 @@ describe('reducer', () => {
       type: 'POST_CANCELED_DELETE',
       profileId,
       post: postAfter,
+    };
+    deepFreeze(action);
+    expect(reducer(stateBefore, action))
+      .toEqual(stateAfter);
+  });
+
+  // TOGGLE_CALENDAR
+  it('should handle TOGGLE_CALENDAR action type', () => {
+    const post = { id: '12345', text: 'i heart buffer', isConfirmingDelete: false, isDeleting: false };
+    const stateBefore = {
+      byProfileId: {
+        [profileId]: {
+          loading: true,
+          loadingMore: false,
+          moreToLoad: false,
+          page: 1,
+          posts: { 12345: post },
+          total: 1,
+          showCalendar: false,
+        },
+      },
+    };
+    const stateAfter = {
+      byProfileId: {
+        [profileId]: {
+          loading: true,
+          loadingMore: false,
+          moreToLoad: false,
+          page: 1,
+          posts: { 12345: post },
+          total: 1,
+          showCalendar: true,
+        },
+      },
+    };
+    const action = {
+      type: 'TOGGLE_CALENDAR',
+      profileId,
+      post,
     };
     deepFreeze(action);
     expect(reducer(stateBefore, action))

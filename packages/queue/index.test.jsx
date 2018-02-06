@@ -27,6 +27,11 @@ describe('Queue', () => {
           { id: 'abc', paused: false },
         ],
       },
+      appSidebar: {
+        user: {
+          features: []
+        },
+      },
       queue: {
         byProfileId: {
           abc: {
@@ -36,7 +41,7 @@ describe('Queue', () => {
             page: 1,
             posts: [],
             total: 0,
-            showCaledar: false,
+            showCalendar: false,
           },
         },
       },
