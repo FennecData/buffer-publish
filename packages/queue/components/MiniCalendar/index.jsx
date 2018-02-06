@@ -13,9 +13,25 @@ const containerStyle = {
   padding: '10px',
 }
 
+const fakeDateData = {
+  'Tue Feb 06 2018': 4,
+  'Wed Feb 07 2018': 2,
+};
+
+const renderDay = (day) => {
+  const dayString = day.toDateString();
+  const numPosts = fakeDateData[dayString];
+  return (
+    <div>
+      <div>{day.getDate()}</div>
+      {numPosts && <div>{`${numPosts} posts`}</div>}
+    </div>
+  )
+};
+
 const MiniCalendar = () =>
   <div style={containerStyle}>
-    <DayPicker showOutsideDays />
+    <DayPicker renderDay={renderDay} showOutsideDays />
   </div>;
 
 MiniCalendar.propTypes = {
