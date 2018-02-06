@@ -20,7 +20,6 @@ import MiniCalendar from  '../MiniCalendar';
 const composerStyle = {
   marginBottom: '1.5rem',
   flexGrow: '1',
-  marginRight: '1.5rem',
 };
 
 const topBarContainerStyle = {
@@ -36,6 +35,7 @@ const loadingContainerStyle = {
 
 const buttonStyle = {
   height: '40px',
+  marginLeft: '1.5rem',
 }
 
 const QueuedPosts = ({
@@ -61,6 +61,7 @@ const QueuedPosts = ({
   paused,
   onUnpauseClick,
   onCalendarToggleClick,
+  hasCalendarFeatureFlip,
 }) => {
   if (loading) {
     return (
@@ -87,12 +88,14 @@ const QueuedPosts = ({
             onFocus={onComposerPlaceholderClick}
           />
         </div>
-        <div style={buttonStyle}>
-          <Button secondary onClick={onCalendarToggleClick}>
-            {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
-          </Button>
-        </div>
-        {showCalendar && <MiniCalendar />}
+        {hasCalendarFeatureFlip &&
+          <div style={buttonStyle}>
+            <Button secondary onClick={onCalendarToggleClick}>
+              {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+            </Button>
+          </div>}
+        {showCalendar && hasCalendarFeatureFlip && <MiniCalendar />}
+
       </div>
       {!!paused && <QueuePausedBar handleClickUnpause={onUnpauseClick} />}
       {total < 1 &&
@@ -154,6 +157,7 @@ QueuedPosts.propTypes = {
   onUnpauseClick: PropTypes.func.isRequired,
   showCalendar: PropTypes.bool,
   onCalendarToggleClick: PropTypes.func.isRequired,
+  hasCalendarFeatureFlip: PropTypes.bool,
 };
 
 QueuedPosts.defaultProps = {
@@ -167,6 +171,7 @@ QueuedPosts.defaultProps = {
   editMode: false,
   paused: false,
   showCalendar: false,
+  hasCalendarFeatureFlip: false,
 };
 
 export default QueuedPosts;
