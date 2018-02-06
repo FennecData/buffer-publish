@@ -5,12 +5,13 @@ import 'react-day-picker/lib/style.css';
 
 const containerStyle = {
   position: 'absolute',
-  right: '37px',
-  marginTop: '70px',
+  right: '2.3rem',
+  marginTop: '3rem',
   backgroundColor: 'white',
   borderRadius: '4px',
-  border: '1px solid grey',
-  padding: '10px',
+  border: '1px solid #dce0e0',
+  padding: '0.5rem',
+  overflow: 'hidden',
 }
 
 const fakeDateData = {
