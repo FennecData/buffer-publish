@@ -124,7 +124,7 @@ export default connect(
     },
     onCalendarToggleClick: () => {
       dispatch(actions.handleCalendarToggle({ profileId: ownProps.profileId }));
-    }
+    },
   }),
 )(QueuedPosts);
 

@@ -371,8 +371,8 @@ const profileReducer = (state = profileInitialState, action) => {
     case actionTypes.TOGGLE_CALENDAR:
       return {
         ...state,
-        showCalendar: state.showCalendar ? false : true,
-      }
+        showCalendar: !state.showCalendar,
+      };
     case `sharePostNow_${dataFetchActionTypes.FETCH_FAIL}`:
     case actionTypes.POST_ERROR:
     case actionTypes.POST_CREATED:
