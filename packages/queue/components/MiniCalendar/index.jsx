@@ -16,15 +16,32 @@ const containerStyle = {
 const fakeDateData = {
   'Tue Feb 06 2018': 4,
   'Wed Feb 07 2018': 2,
+  'Thu Feb 08 2018': 1,
 };
+
+const cellStyle = {
+  height: '1.6rem',
+  width: '1.9rem',
+}
+
+const dateStyle = {
+  top: '-0.3rem',
+  position: 'relative',
+}
+
+const numPostsStyle = {
+  fontSize: '0.3rem',
+  position: 'relative',
+  top: '-0.3rem',
+}
 
 const renderDay = (day) => {
   const dayString = day.toDateString();
   const numPosts = fakeDateData[dayString];
   return (
-    <div>
-      <div>{day.getDate()}</div>
-      {numPosts && <div>{`${numPosts} posts`}</div>}
+    <div style={cellStyle}>
+      <div style={dateStyle}>{day.getDate()}</div>
+      {numPosts && <div style={numPostsStyle}>{numPosts + ' post'}{numPosts > 1 ? 's' : ''}</div>}
     </div>
   )
 };
