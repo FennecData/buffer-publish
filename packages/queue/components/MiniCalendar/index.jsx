@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
+import { ArrowRightIcon, ArrowLeftIcon } from '@bufferapp/components/Icon/Icons';
+import { Button } from '@bufferapp/components';
 import 'react-day-picker/lib/style.css';
 
 const containerStyle = {
@@ -36,6 +38,46 @@ const numPostsStyle = {
   top: '-0.3rem',
 }
 
+const NavBar = ({
+  nextMonth,
+  previousMonth,
+  onPreviousClick,
+  onNextClick,
+  className,
+  localeUtils,
+}) => {
+  const styleLeft = {
+    float: 'left',
+  };
+  const styleRight = {
+    float: 'right',
+  };
+  const onNext = () => {
+    onNextClick();
+    // add our hooks here
+  };
+
+  const onPrev = () => {
+    onPreviousClick();
+    // add our hooks here
+  };
+
+  return (
+    <div className={className}>
+      <div style={styleLeft}>
+        <Button style={styleLeft} noStyle onClick={onNext}>
+          <ArrowLeftIcon/>
+        </Button>
+      </div>
+      <div style={styleRight}>
+        <Button noStyle onClick={onNext}>
+          <ArrowRightIcon/>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
 const renderDay = (day) => {
   const dayString = day.toDateString();
   const numPosts = fakeDateData[dayString];
@@ -49,7 +91,7 @@ const renderDay = (day) => {
 
 const MiniCalendar = () =>
   <div style={containerStyle}>
-    <DayPicker renderDay={renderDay} showOutsideDays />
+    <DayPicker navbarElement={<NavBar/>} renderDay={renderDay} showOutsideDays />
   </div>;
 
 MiniCalendar.propTypes = {
